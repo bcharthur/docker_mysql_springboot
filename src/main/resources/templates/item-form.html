@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Form Item</title>
+</head>
+<body>
+<h1 th:text="${#strings.isEmpty(item.id) ? 'Créer un nouvel item' : 'Modifier l''item'}"></h1>
+
+<form th:action="@{/items}" th:object="${item}" method="post">
+    <input type="hidden" id="id" th:field="*{id}" readonly /><br/><br/>
+
+    <label for="name">Nom : </label>
+    <input type="text" id="name" th:field="*{name}" /><br/><br/>
+
+    <button type="submit">Enregistrer</button>
+</form>
+
+<p><a th:href="@{/items}">Retour à la liste</a></p>
+</body>
+</html>
